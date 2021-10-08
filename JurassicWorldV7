@@ -1,10 +1,10 @@
-    /*
+/*
 Author - Marco Giovanni Solari
 Date - 10/11/2020
 Time - 11:28am
 Version 5.0
 This program generates a jurassic world environment for the user, they must survive certain amount of rounds
- */
+*/
 import java.util.Scanner;
 import  java.io.*;
 
@@ -66,7 +66,7 @@ class JurassicWorldV7 {//Main class that contains program
             myReader.close();
         }catch (FileNotFoundException e){
             System.out.println("An error occurred");
-            e.printStackTrace();
+
         }
     }
 
@@ -77,7 +77,7 @@ class JurassicWorldV7 {//Main class that contains program
         String name = scanner.nextLine();
         try {
             FileWriter myWriter = new FileWriter("Scores.txt");
-            System.out.println("works");
+
             myWriter.write(name + " survived for " + Rounds + " Rounds!");
             myWriter.close();
         } catch (IOException e) {
@@ -87,7 +87,7 @@ class JurassicWorldV7 {//Main class that contains program
 
     }
 
-    public static DinoWorld [] CreateDinoWorld(int range){//method that creates the abstract data type
+    public static DinoWorld[] CreateDinoWorld(int range){//method that creates the abstract data type
         DinoWorld[] array = new DinoWorld[range];
         return array;
     }
@@ -117,7 +117,7 @@ class JurassicWorldV7 {//Main class that contains program
         System.out.println("To survive this game you must last " + WinRound + " rounds. Good Luck!");
     }
 
-    public static void  DinoWorld(DinoWorld [] array) {//Names first dinosaur
+    public static void  DinoWorld(DinoWorld[] array) {//Names first dinosaur
         for(int i = 0; i <= array.length -1; i++){//for loop to fill abstract data type
 
             Scanner scanner = new Scanner(System.in);
@@ -141,7 +141,7 @@ class JurassicWorldV7 {//Main class that contains program
 
     }
 
-    public static void DinosaurStatus(DinoWorld [] array,int i) {//Shows status of Dinosaur
+    public static void DinosaurStatus(DinoWorld[] array, int i) {//Shows status of Dinosaur
 
         if (array[i].CalmnessScore <= 2 && array[i].HungerLevel <= 2 ){
             System.out.println((array[i].DinosaurName) + " is looking like a killer!");
@@ -170,7 +170,7 @@ class JurassicWorldV7 {//Main class that contains program
 
     }
 
-    public static void FeedDinosaur(DinoWorld [] array, int choice){//Method to feed dinosaur
+    public static void FeedDinosaur(DinoWorld[] array, int choice){//Method to feed dinosaur
 
         int FeedSuccess = (int) (Math.random() * ((3) + 1));
         System.out.println("Fed "+(array[choice].DinosaurName) + " By " + FeedSuccess+ " points");
@@ -183,30 +183,30 @@ class JurassicWorldV7 {//Main class that contains program
 
 
 
-    public static void sort(DinoWorld [] array, int count){
+    public static void sort(DinoWorld[] array, int count){
         int i, j;
         DinoWorld temp;
         if(count ==1){
-        for(i = 0; i < array.length; i++){
-            for (j=0; j < array.length-1; j++){
-                if (array[j].DangerLevel > array[j+1].DangerLevel){
-                    temp = array[j];
-                    array[j] = array[j+1];
-                    array[j+1] = temp;
+            for(i = 0; i < array.length; i++){
+                for (j=0; j < array.length-1; j++){
+                    if (array[j].DangerLevel > array[j+1].DangerLevel){
+                        temp = array[j];
+                        array[j] = array[j+1];
+                        array[j+1] = temp;
+                    }
                 }
             }
+
+            for(i=0; i< array.length; i++){
+                System.out.println(array[i].DinosaurName + " Danger: " + array[i].DangerLevel);
+            }
+
         }
-        System.out.println("sorted:");
-        for(i=0; i< array.length; i++){
-            System.out.println(array[i].DinosaurName + " Danger: " + array[i].DangerLevel);
-        }
-
-    }
     }
 
 
 
-    public static void RoundChange(DinoWorld [] array, int i) {//Calculates the changes each round
+    public static void RoundChange(DinoWorld[] array, int i) {//Calculates the changes each round
         int calmness = array[i].CalmnessScore;
         int hunger = array[i].HungerLevel;
 
@@ -239,7 +239,7 @@ class JurassicWorldV7 {//Main class that contains program
         }
     }
 
-    public static void RoundChoice(DinoWorld [] array, int choice ){//Player chooses what to change
+    public static void RoundChoice(DinoWorld[] array, int choice ){//Player chooses what to change
         Scanner scanner = new Scanner(System.in);
         String Choice;
         System.out.println("Enter S to Sooth or F to feed:");
